@@ -8,20 +8,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button mFindUserButton;
-    private EditText mUserName;
+    @BindView(R.id.findUserButton) Button mFindUserButton;
+    @BindView(R.id.usernameEditText) EditText mUserName;
+
+//    private Button mFindUserButton;
+//    private EditText mUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        mUserName = (EditText) findViewById(R.id.usernameEditText);
-        mFindUserButton = (Button) findViewById(R.id.findUserButton);
         mFindUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

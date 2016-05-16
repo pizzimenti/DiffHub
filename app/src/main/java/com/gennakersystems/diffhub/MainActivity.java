@@ -12,14 +12,11 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     @BindView(R.id.findUserButton) Button mFindUserButton;
     @BindView(R.id.usernameEditText) EditText mUserName;
-
-//    private Button mFindUserButton;
-//    private EditText mUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +24,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mFindUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username = mUserName.getText().toString();
-                Intent intent = new Intent(MainActivity.this, UserListActivity.class);
-                intent.putExtra("username", username);
-                startActivity(intent);
-            }
-        });
+        mFindUserButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == mFindUserButton) {
+            String username = mUserName.getText().toString();
+            Intent intent = new Intent(MainActivity.this, UserListActivity.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
+        }
     }
 }

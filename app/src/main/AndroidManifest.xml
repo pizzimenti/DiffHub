@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.gennakersystems.diffhub.MainActivity"
+                />
         </activity>
     </application>
 

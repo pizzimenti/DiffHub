@@ -34,7 +34,7 @@ public class UserListActivity extends AppCompatActivity {
     }
 
     private void getUser(String username) {
-        ghService.findUser(username, new Callback() {
+        GitHubService.findUser(username, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -42,15 +42,10 @@ public class UserListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    if (response.isSuccessful()) {
-                        Log.v(TAG, jsonData);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        GitHubService.processUser(response);
+
+
                 }
-            }
         });
     }
 }

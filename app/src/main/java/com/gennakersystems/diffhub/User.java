@@ -1,5 +1,9 @@
 package com.gennakersystems.diffhub;
 
+import android.util.Log;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -53,5 +57,14 @@ public class User {
 
     public int getFollowing() {
         return mFollowing;
+    }
+
+    public Date getFormattedDate() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        try {
+            Date date = format.parse("blah");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

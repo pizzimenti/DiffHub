@@ -8,9 +8,6 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
-/**
- * Created by Guest on 5/16/16.
- */
 public class ghService {
     public static final String TAG = ghService.class.getSimpleName();
 
@@ -23,8 +20,8 @@ public class ghService {
 
 //        HttpUrl.Builder urlBuilder = HttpUrl.parse(GH_BASE_URL).newBuilder();
 //        urlBuilder.addQueryParameter(GH_USER_QUERY_PARAMETER, username);
-//        These are unnecessary because url does not have questionmark queries
-                
+//        URLbuilder is unnecessary because GH URLs do not have query structure
+
         String url = GH_USER_QUERY_PARAMETER + username;
         Log.d(TAG, url);
 

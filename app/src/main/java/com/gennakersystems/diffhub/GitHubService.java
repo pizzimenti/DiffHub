@@ -23,6 +23,7 @@ import okhttp3.Response;
 public class GitHubService {
     public static final String TAG = GitHubService.class.getSimpleName();
 
+
     public static void findUser(String username, Callback callback) {
         OkHttpClient client = new OkHttpClient();
         String url = Constants.GH_USER_URL + username + Constants.GH_ACCESS_TOKEN;
@@ -47,7 +48,8 @@ public class GitHubService {
                 Log.d(TAG, imageUrl);
                 String email = ghJSON.getString("email");
                 Log.d(TAG, email);
-
+                String creationDate = ghJSON.getString("created_at");
+                Log.d(TAG, creationDate);
                 int repos = ghJSON.getInt("public_repos");
                 Log.d(TAG, repos + "");
                 int followers = ghJSON.getInt("followers");

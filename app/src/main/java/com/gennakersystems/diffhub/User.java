@@ -11,12 +11,12 @@ public class User {
     private String mName;
     private String mImageUrl;
     private String mEmail;
-    private Date mCreationDate;
+    private String mCreationDate;
     private int mRepos;
     private int mFollowers;
     private int mFollowing;
 
-    public User(String username, String name, String imageUrl, String email, Date creationDate, int repos, int followers, int following) {
+    public User(String username, String name, String imageUrl, String email, String creationDate, int repos, int followers, int following) {
         this.mUsername = username;
         this.mName = name;
         this.mImageUrl = imageUrl;
@@ -43,7 +43,7 @@ public class User {
         return mEmail;
     }
 
-    public Date getCreationDate() {
+    public String getCreationDate() {
         return mCreationDate;
     }
 
@@ -59,12 +59,16 @@ public class User {
         return mFollowing;
     }
 
-    public Date getFormattedDate() {
+
+    public static Date getFormattedDate(String creationDate) {
+        Date date = null;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         try {
-            Date date = format.parse("blah");
+            date = format.parse(creationDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        return date;
     }
+
 }

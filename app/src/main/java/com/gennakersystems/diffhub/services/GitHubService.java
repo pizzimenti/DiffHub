@@ -1,18 +1,15 @@
-package com.gennakersystems.diffhub;
+package com.gennakersystems.diffhub.services;
 
-import android.provider.SyncStateContract;
 import android.util.Log;
+
+import com.gennakersystems.diffhub.Constants;
+import com.gennakersystems.diffhub.models.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;

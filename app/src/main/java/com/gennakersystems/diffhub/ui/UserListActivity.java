@@ -1,15 +1,18 @@
-package com.gennakersystems.diffhub;
+package com.gennakersystems.diffhub.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gennakersystems.diffhub.R;
+import com.gennakersystems.diffhub.models.User;
+import com.gennakersystems.diffhub.services.GitHubService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,7 +73,6 @@ public class UserListActivity extends AppCompatActivity {
                         }
                         ArrayAdapter adapter = new ArrayAdapter(UserListActivity.this, android.R.layout.simple_list_item_1, userNames);
                         mListView.setAdapter(adapter);
-
                     }
                 });
             }

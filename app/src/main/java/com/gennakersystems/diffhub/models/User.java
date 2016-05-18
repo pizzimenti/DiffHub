@@ -1,4 +1,4 @@
-package com.gennakersystems.diffhub;
+package com.gennakersystems.diffhub.models;
 
 import android.util.Log;
 

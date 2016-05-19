@@ -3,11 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DiffHuB.iml" filepath="$PROJECT_DIR$/DiffHuB.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DiffHub.iml" filepath="$PROJECT_DIR$/DiffHub.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/diffhub.iml" filepath="$PROJECT_DIR$/diffhub.iml" />
     </modules>
   </component>
 </project>

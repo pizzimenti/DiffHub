@@ -1,28 +1,26 @@
 package com.gennakersystems.diffhub.models;
 
-import android.util.Log;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
     private String mUsername;
-    private String mName;
+    private String mFullName;
     private String mImageUrl;
     private String mEmail;
     private String mCreationDate;
-    private int mRepos;
+    private int mRepoCount;
     private int mFollowers;
     private int mFollowing;
 
-    public User(String username, String name, String imageUrl, String email, String creationDate, int repos, int followers, int following) {
+    public User(String username, String fullname, String imageUrl, String email, String creationDate, int repocount, int followers, int following) {
         this.mUsername = username;
-        this.mName = name;
+        this.mFullName = fullname;
         this.mImageUrl = imageUrl;
         this.mEmail = email;
         this.mCreationDate = creationDate;
-        this.mRepos = repos;
+        this.mRepoCount = repocount;
         this.mFollowers = followers;
         this.mFollowing = following;
     }
@@ -31,8 +29,8 @@ public class User {
         return mUsername;
     }
 
-    public String getName() {
-        return mName;
+    public String getFullname() {
+        return mFullName;
     }
 
     public String getImageUrl() {
@@ -47,8 +45,8 @@ public class User {
         return mCreationDate;
     }
 
-    public int getRepos() {
-        return mRepos;
+    public int getRepoCount() {
+        return mRepoCount;
     }
 
     public int getFollowers() {

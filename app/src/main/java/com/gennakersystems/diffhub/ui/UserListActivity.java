@@ -3,6 +3,8 @@ package com.gennakersystems.diffhub.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gennakersystems.diffhub.R;
+import com.gennakersystems.diffhub.adapters.UserListAdapter;
 import com.gennakersystems.diffhub.models.User;
 import com.gennakersystems.diffhub.services.GitHubService;
 
@@ -26,8 +29,8 @@ import okhttp3.Response;
 public class UserListActivity extends AppCompatActivity {
     public static final String TAG = UserListActivity.class.getSimpleName();
     public ArrayList<User> mUsers = new ArrayList<>();
-    @BindView(R.id.listView) ListView mListView;
-    @BindView(R.id.usernameTextView) TextView mUsernameTextView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    private UserListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +38,8 @@ public class UserListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_list);
         ButterKnife.bind(this);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, mUsers);
-        mListView.setAdapter(adapter);
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String user = ((TextView) view).getText().toString();
-                Toast.makeText(UserListActivity.this, user, Toast.LENGTH_LONG).show();
-            }
-        });
-
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
-        mUsernameTextView.setText("Repositories for the user: " + username);
         getUser(username);
 
     }
@@ -67,12 +58,11 @@ public class UserListActivity extends AppCompatActivity {
                 UserListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] userNames = new String[mUsers.size()];
-                        for (int i = 0; i < userNames.length; i++) {
-                            userNames[i] = mUsers.get(i).getName();
-                        }
-                        ArrayAdapter adapter = new ArrayAdapter(UserListActivity.this, android.R.layout.simple_list_item_1, userNames);
-                        mListView.setAdapter(adapter);
+                        mAdapter = new UserListAdapter(getApplicationContext(), mUsers);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(UserListActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }
